@@ -157,7 +157,7 @@
                 $array_length = count($array_abstg);
 
                 //Hier werden die eingegebenen Werte der Filter in Variabeln gepackt
-                    $ges_name = $_GET['name'];
+                    $ges_name = strtolower($_GET['name']);
                     $suchbegriff = $ges_name;
 
                     $ges_jahrVon = $_GET['datevon'];
@@ -181,6 +181,7 @@
                     $datum = $array_abstg[$i][0];
                     $jahr = substr($datum, -4);
                     $name = utf8_encode($array_abstg[$i][1]);
+                    $use_name = strtolower($name);
                     $artNum = $array_abstg[$i][2];
                     $artBez = $array_abstg[$i][3];
                     $stimmberechtigte = $array_abstg[$i][4];
@@ -203,7 +204,7 @@
                                     $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                     $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                     $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax &&
-                                    ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                    ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
                                     echo "<h3>$datum - $name</h3><br>";
                                     if($jaStimmen>$neinStimmen){
                                         echo "Ergebnis: ANGENOMMEN mit ".$jaStimmenProz."% Ja-Stimmen von ".$gueltigeStimmen." gültigen Stimmen";
@@ -225,7 +226,7 @@
                                     $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                     $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                     $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax &&
-                                    ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                    ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
 
                                     echo "<h3>$datum - $name</h3><br>";
                                     if($jaStimmen>$neinStimmen){
@@ -253,7 +254,7 @@
                                 $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                 $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                 $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax&&
-                                ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
 
                                 if ($ges_ergebnis == "Angenommen" && $jaStimmenProz > 50) {
                                     echo "<h3>$datum - $name</h3><br>";
@@ -277,7 +278,7 @@
                                 $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                 $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                 $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax&&
-                                ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
                                 if ($ges_ergebnis == "Abgelehnt" && $jaStimmenProz <= 50) {
                                     echo "<h3>$datum - $name</h3><br>";
                                     if($jaStimmen>$neinStimmen){
@@ -300,7 +301,7 @@
                                 $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                 $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                 $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax &&
-                                ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
                                 if ($ges_ergebnis == "Angenommen" && $jaStimmenProz > 50) {
                                     echo "<h3>$datum - $name</h3><br>";
                                     if($jaStimmen>$neinStimmen){
@@ -325,7 +326,7 @@
                                 $ges_gueltigeStimmMin <= $gueltigeStimmen && $gueltigeStimmen <= $ges_gueltigeStimmMax &&
                                 $ges_StimmBerMin <= $stimmberechtigte && $stimmberechtigte <= $ges_StimmBerMax &&
                                 $ges_StimmBetMin <= $stimmbeteiligung && $stimmbeteiligung <= $ges_StimmBetMax &&
-                                ((strpos($name, $ges_name))!==false||$ges_name=="")) {
+                                ((strpos($use_name, $ges_name))!==false||$ges_name=="")) {
                                 if ($ges_ergebnis == "Abgelehnt" && $jaStimmenProz <= 50) {
                                     echo "<h3>$datum - $name</h3><br>";
                                     if($jaStimmen>$neinStimmen){
